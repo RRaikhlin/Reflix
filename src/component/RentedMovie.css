@@ -1,0 +1,14 @@
+.imgContainer {
+    position: relative;
+    display:inline-block;
+}
+
+.plus {
+    
+    position: absolute;
+    top: 5%;
+    right:5%;
+    
+    border-radius: 50%;
+    background-color: blue;
+}

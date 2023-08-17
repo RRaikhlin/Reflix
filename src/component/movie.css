@@ -1,0 +1,14 @@
+
+.selected {
+    display: inline;
+    padding: 5px;
+    border: solid 5px greenyellow;
+    height: 250px;
+}
+
+.unSelected {
+    display: inline-block;
+    padding: 5px;
+    border: solid 5px rebeccapurple;
+    height:250px;
+}

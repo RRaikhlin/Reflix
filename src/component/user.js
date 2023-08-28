@@ -17,6 +17,7 @@ console.log(id)
           <div className={`${uClass} user`}   style={{backgroundColor: `#${color.toString(16)}`}}  onClick={handleClick}>
        
            name: {uName}
+           <br></br>
          
            account: {account}
       

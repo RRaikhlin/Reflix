@@ -3,4 +3,5 @@
     grid-template-columns: repeat(4, 1fr);
     width: 70vw;
     margin: auto;
+    margin: 15% auto;
 }

@@ -39,26 +39,23 @@ function App() {
 
   const [usersData, setUsersData] = useState (dataUsers)
   
-  const updateAccounts = (amount, movieInfo) => {
+  const updateAccounts = (amount, movieInfo, isRented) => {
     const updatedUsersAccounts = [...usersData]
-    updatedUsersAccounts[currentUserId].account -= amount 
-    updatedUsersAccounts[currentUserId].rentedMovies.push(movieInfo) 
-    console.log("current user ac= "+ updatedUsersAccounts[currentUserId].account)
+      if (!isRented){
+        updatedUsersAccounts[currentUserId].account -= amount 
+        updatedUsersAccounts[currentUserId].rentedMovies.push(movieInfo) 
+        console.log("current user ac= "+ updatedUsersAccounts[currentUserId].account)
+      }
+      if (isRented){
+        updatedUsersAccounts[currentUserId].account += amount 
+        const updatedRentedMovies = updatedUsersAccounts[currentUserId].rentedMovies.filter(m => m.id != movieInfo.id)
+        updatedUsersAccounts[currentUserId].rentedMovies = updatedRentedMovies
+        console.log("current user ac= "+ updatedUsersAccounts[currentUserId].account)
+      }
+
     setUsersData(updatedUsersAccounts) 
     return updatedUsersAccounts[currentUserId]
   }
-
-  const updateDataCaseUnrented = (amount, movieInfo) => {
-    const updatedUsersAccounts = [...usersData]
-    updatedUsersAccounts[currentUserId].account += amount 
-    const updatedRentedMovies = updatedUsersAccounts[currentUserId].rentedMovies.filter(m => m.id != movieInfo.id)
-    updatedUsersAccounts[currentUserId].rentedMovies = updatedRentedMovies
-    console.log("current user ac= "+ updatedUsersAccounts[currentUserId].account)
-    setUsersData(updatedUsersAccounts) 
-    return updatedUsersAccounts[currentUserId]
-  }
-
-
 
 
   return (     
@@ -67,7 +64,7 @@ function App() {
   <NavBar />
   <Routes>
     <Route path="/" element={<Landing setCurrentUserId={setCurrentUserId} currentUserId={currentUserId} usersData={usersData} />} />
-    <Route path="catalog" element={<Catalog updateAccounts={updateAccounts} updateDataCaseUnrented={updateDataCaseUnrented} 
+    <Route path="catalog" element={<Catalog updateAccounts={updateAccounts}  
           usersData={usersData} currentUserId={currentUserId}/>} />
     <Route path="catalog/:movieId" element={<MovieInfo />} />
 

@@ -1,14 +1,74 @@
 
 .selected {
-    display: inline;
-    padding: 5px;
-    border: solid 5px greenyellow;
-    height: 250px;
+    
+  
+   
+    border: solid 1px rebeccapurple;
+
+    border-radius: 5%;
+
 }
 
 .unSelected {
-    display: inline-block;
-    padding: 5px;
-    border: solid 5px rebeccapurple;
-    height:250px;
+
+ 
+  
+    border: solid; 
+    border-radius: 5%;
+
 }
+
+.movie {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    margin: auto;
+    
+
+}
+
+.infoBtn {
+    position: absolute;
+    bottom: 5%;
+    right: 50%;
+    opacity: 50%;
+    border-radius: 5%;
+}
+
+.title {
+    height: 10vh;
+    text-align:center;
+    justify-self:end;
+}
+
+.image {
+    width: 100%;
+}
+
+.imgContainer {
+    position: relative;
+    display:inline-block;
+}
+.plus {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    color: white;
+
+    border-radius: 50%;
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(210, 160, 34);
+    cursor: pointer;
+  }
+  .rentedContainer {
+    display: block;
+    background-color: rgb(231, 231, 231);
+    width: 100%;
+    padding: 30px;
+    height: auto;
+}
+
+
+

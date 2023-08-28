@@ -1,14 +1,14 @@
-
+import './Account.css'
 
 function Account({ currentAccount}) {
 
 
     return (
-        <>
+        <div>
 
-          <div> {currentAccount} </div>
+          <div className="account"> {currentAccount} </div>
                         
-        </>
+        </div>
     );
 }
 

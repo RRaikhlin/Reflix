@@ -15,7 +15,6 @@ function Movie({movieInfo, updateAccounts, isUserActive, rentedMoviesByCurrentUs
       console.log("movie check")
        
     
-
     const checkIsRented = () => {
         if (typeof rentedMoviesByCurrentUsers !== "undefined" && rentedMoviesByCurrentUsers.length != 0 ) {
             const rentedMoviesId = rentedMoviesByCurrentUsers.map(m => m.id)
@@ -36,21 +35,28 @@ function Movie({movieInfo, updateAccounts, isUserActive, rentedMoviesByCurrentUs
    
 
     const handleClick = () => {
-        
-        currentAccount = updateAccounts(moviePrice, movieInfo)
+
+        currentAccount = updateAccounts(moviePrice, movieInfo, isRented)
+
         if (checkIsRented()) {setIsRented(true)}   
 
     }
 
     return (
         <>
+
                 <div className="movie">
-                    <div key={m.id}>{m.title}</div>
-                    <img className={isRented ? "selected" : "unSelected"} key={m.title} alt={m.title} src={BASE_IMAGE_URL+m.poster_path} 
-                        onClick={(isUserActive && !isRented && currentAccount>0 ) ? handleClick : null}/>
-                
-                    <button> <Link to={`/catalog/${movieInfo.id}`} > Movie Info </Link ></button>
+                    <div className="title" key={m.id}><h3>{m.title}</h3></div>
+                       <div className="imgContainer movie">           
+                       <Link to={`/catalog/${movieInfo.id}`}>
+                    <img className={isRented ? "selected image" : "unSelected image"} key={m.title} alt={m.title} src={BASE_IMAGE_URL + m.poster_path} />
+                    </Link>      
+                 {(!isRented)&&<button className="plus" onClick={(isUserActive && currentAccount>0 ) ? handleClick : null}> + </button>} 
+                 {(isRented)&&<button className="plus" onClick={(isUserActive ) ? handleClick : null}> - </button>}   
+  
+                    </div>
                </div>
+           
        
                    
         </>

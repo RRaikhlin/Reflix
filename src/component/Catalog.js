@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Movie from "./Movie";
-import RentedMovie from "./RentedMovie";
 import Account from "./Account";
 import { BASE_URL, API_KEY } from "./utils/Constants";
 import './Catalog.css'
@@ -90,13 +89,15 @@ function Catalog({updateAccounts, updateDataCaseUnrented, usersData, currentUser
 
           {isUserActive ? <Account currentAccount={currentAccount}/> : null}
             
-          {(isUserActive && rentedMoviesByCurrentUsers.length !== 0 ) ? <div>
-          <div> rented movies</div>
+          {(isUserActive && rentedMoviesByCurrentUsers.length !== 0 ) ? <div className="rentedContainer">
+          <div className="titlePage"> <h1>Rented movies</h1></div>
             <div className="moviesContainer">
             {rentedMoviesByCurrentUsers.map((m, id) => 
-            <RentedMovie key={id} movieInfo = {m} updateDataCaseUnrented={updateDataCaseUnrented} isUserActive={isUserActive}  /> )}
+                    {    return <Movie key={id} movieInfo = {m} updateAccounts={updateAccounts} isUserActive={isUserActive} 
+                    rentedMoviesByCurrentUsers={rentedMoviesByCurrentUsers} currentAccount={currentAccount}/>   }
+                )}
         </div>
-          <div> -----------</div>
+       
                 </div> : null}
 
             <div className="moviesContainer">

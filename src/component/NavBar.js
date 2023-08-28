@@ -13,13 +13,13 @@ function NavBar({movieInfo, updateAccounts}) {
             <div>
         <button className='button'>  
         <Link to="/">
-         Landing
+        <h4> Home </h4>
         </Link>
         </button>
 
         <button className='button'>  
         <Link to="/catalog">
-            Catalog
+        <h4>   Catalog </h4>
         </Link>
         </button>
             </div>

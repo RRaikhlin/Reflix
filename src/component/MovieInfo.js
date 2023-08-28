@@ -5,8 +5,6 @@
 
     function MovieInfo({}) {
 
-        
-
         const { movieId } = useParams()
 
         const movieUrl = `${BASE_URL}/movie/${movieId}?&append_to_response=videos&api_key=${API_KEY}`;
@@ -37,23 +35,18 @@
     const video = movies.videos.results[0].key }
 
 
-        
-
-
-
         return (
             <>
-                <div>
-        <div className="titlePage centered"><h1>MOVIE INFO</h1></div> 
-        <div className="centered">
-                <div className="centered"><h2>{title}</h2>  </div>
-                
-                <img className="unSelected centered" alt={title} src={BASE_IMAGE_URL+image} />
-                <div className="titlePage"> <h2>{overview}</h2> </div>
+            <div>
+                <div className="titlePage centered"><h1>MOVIE INFO</h1></div> 
+                <div className="centered">
+                    <div className="centered"><h2>{title}</h2>  </div>
+                        <img className="unSelected centered" alt={title} src={BASE_IMAGE_URL+image} />
+                    <div className="titlePage"> <h2>{overview}</h2> </div>
                 </div>
 
         
-                </div>
+            </div>
                 
             </>
         );

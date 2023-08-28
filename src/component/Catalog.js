@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Movie from "./Movie";
 import Account from "./Account";
+import Modal from "./Modal";
 import { BASE_URL, API_KEY } from "./utils/Constants";
 import './Catalog.css'
 
 
-function Catalog({updateAccounts, updateDataCaseUnrented, usersData, currentUserId}) {
+function Catalog({updateAccounts, usersData, currentUserId}) {
 
     const trendingUrl = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=1`;
    
@@ -80,34 +81,40 @@ function Catalog({updateAccounts, updateDataCaseUnrented, usersData, currentUser
         setSearchQuery(event.target.value)
     }
 
- 
-
+    const [modalActive, setModalActive] = useState(null)
+    const modalActivate = (movieInfo) => {
+        if (modalActive !== null) {setModalActive(null)}
+        else {
+        setModalActive(movieInfo)
+        }
+    }
 
     return (
         <>
+        {(modalActive) && <Modal modalActivate={modalActivate} modalActive={modalActive} />}
           <input type="text" value={searchQuery} onChange={updateSearchQuery} />
 
           {isUserActive ? <Account currentAccount={currentAccount}/> : null}
             
           {(isUserActive && rentedMoviesByCurrentUsers.length !== 0 ) ? <div className="rentedContainer">
-          <div className="titlePage"> <h1>Rented movies</h1></div>
+            <div className="titlePage"> <h1>Rented movies</h1></div>
             <div className="moviesContainer">
-            {rentedMoviesByCurrentUsers.map((m, id) => 
+                {rentedMoviesByCurrentUsers.map((m, id) => 
                     {    return <Movie key={id} movieInfo = {m} updateAccounts={updateAccounts} isUserActive={isUserActive} 
                     rentedMoviesByCurrentUsers={rentedMoviesByCurrentUsers} currentAccount={currentAccount}/>   }
                 )}
-        </div>
+                                                                        </div>
        
-                </div> : null}
+                                                                        </div> : null}
 
-            <div className="moviesContainer">
+           <div className="moviesContainer">
 
                 {movies.map((m,id) =>
 
-           {    return <Movie key={id} movieInfo = {m} updateAccounts={updateAccounts} isUserActive={isUserActive} 
-                    rentedMoviesByCurrentUsers={rentedMoviesByCurrentUsers} currentAccount={currentAccount}/>   }
+                {return <Movie key={id} movieInfo = {m} updateAccounts={updateAccounts} isUserActive={isUserActive} 
+                    rentedMoviesByCurrentUsers={rentedMoviesByCurrentUsers} currentAccount={currentAccount} modalActivate={modalActivate}/>   }
                 )}
-            </div>
+           </div>
             
         </>
     );

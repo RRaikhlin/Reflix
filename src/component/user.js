@@ -16,10 +16,10 @@ console.log(id)
     
           <div className={`${uClass} user`}   style={{backgroundColor: `#${color.toString(16)}`}}  onClick={handleClick}>
        
-           name: {uName}
+          <h3> name: {uName} </h3>
            <br></br>
          
-           account: {account}
+          <h4> account: {account} </h4>
       
           </div>   )
     

@@ -1,0 +1,25 @@
+.modalContainer {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    background-color: grey;
+    opacity: 0.5;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.MovieInf {
+    position: absolute;
+    display: inline-block;
+    top: 30vh;
+    left: 35vw;
+    width: 35vw;
+    height: 45vh;
+    background-color: white;
+    text-align: center;
+    opacity: 1;
+
+    z-index: 2;
+
+}
